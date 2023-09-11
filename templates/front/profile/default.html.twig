@@ -1,0 +1,34 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Mon profil {% endblock %}
+
+{% block body %}
+<section class="section-profile">
+<div class="profile-page">
+    <h1 class="profile-header flex flex-center">Compte de {{ app.user.userIdentifier }}</h1>
+    <div class="profile-links">
+        <ul class="flex flex-column flex-center ">
+            <li>
+                <a href="/gift">
+                    <button>Mes listes de cadeaux</button>
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('front_app_profile_edit_user') }}">
+                    <button>
+                    Modifier mes informations personnelles
+                    </button>
+                </a>
+            </li>
+            <li>
+            <a href="{{ path('front_app_profile_edit_credentials') }}">
+                <button>
+                Modifier le mot de passe
+                </button>
+            </a>
+        </li>
+        </ul>
+    </div>
+</div>
+</section>
+{% endblock %}

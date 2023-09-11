@@ -1,0 +1,186 @@
+{% import '@VichUploader/Form/fields.html.twig' as vichFields %}
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Liste de cadeaux {% endblock %}
+
+{% block body %}
+<h1 class="flex flex-center">Liste de cadeau</h1>
+
+{# <table class="table ">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ gift_list.id }}</td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td>{{ gift_list.titre }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ gift_list.description }}</td>
+        </tr>
+        <tr>
+            <th>Theme</th>
+            <td>{{ gift_list.theme }}</td>
+        </tr>
+        <tr>
+            <th>Privacy</th>
+            <td>{{ gift_list.privacy }}</td>
+        </tr>
+        <tr>
+            <th>DateOuverture</th>
+            <td>{{ gift_list.dateOuverture ? gift_list.dateOuverture|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>DateFermeture</th>
+            <td>{{ gift_list.dateFermeture ? gift_list.dateFermeture|date('Y-m-d') : '' }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<a href="{{ path('front_app_gift_list_index') }}">back to list</a>
+
+<a href="{{ path('front_app_gift_list_edit', {'id': gift_list.id}) }}">edit</a>
+
+{{ include('front/gift_list/_delete_form.html.twig') }} #}
+
+<section class="section-show-list">
+
+    <div class="flex-center zone-image">
+            
+                {% if vich_uploader_asset(gift_list, 'imageFile') is null %}
+                     <img  width="100%" height="150px" src="{{ asset('img/gift_box.jpg') }}">
+                {% else %}
+                    <img  width="100%"  height="150px" src="{{ vich_uploader_asset(gift_list, 'imageFile') }}" alt="{{gift_list.titre}}" srcset="">
+                {% endif %}
+    </div>
+
+    <div class="flex  flex-column  flex-center zone-text">
+        <div class="">
+            <h1>{{gift_list.titre}}</h1>
+
+            <h2> {{ gift_list.description }}</h2>
+
+            <h3>{{ gift_list.theme }} </h3>
+        </div>
+
+    </div>
+
+    <div class="flex flex-center ">
+        <div class="flex space-between zone_date">
+        <div>
+            <p>Date d'ouverture</p>
+            <p class="flex flex-center">{{ gift_list.dateOuverture ? gift_list.dateOuverture|date('d-m-Y') : '' }} </p>
+        </div>
+
+        <div>
+            <p>Date de fermeture</p>
+            <p class="flex flex-center">{{ gift_list.dateFermeture ? gift_list.dateFermeture|date('d-m-Y') : '' }} </p>
+        </div>
+    </div>
+    </div>
+    
+</section>
+
+<!-- Liste des cadeaux de la liste -->
+<section class="show_gift">
+
+    <div class="flex space-around zone-action">
+        <div>
+            <h1 class=" title">Les cadeaux </h1>
+        </div>
+        <div class="link flex-center">
+            <a href="{{ path('front_app_gift_new',{'id': gift_list.id}) }}">Ajouter un cadeau</a>
+        </div>
+    </div>
+
+    <div class="zone-gift flex space-around">
+
+        {% for gift in gifts %}
+        {# <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ gift.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ gift.nom }}</td>
+                </tr>
+                <tr>
+                    <th>Prix</th>
+                    <td>{{ gift.prix }}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td>
+                        {% if gift.imageName %}
+                        <img src="{{ vich_uploader_asset(gift, 'imageFile') }}" alt="image" />
+                        {% else %}
+                        <p>Aucune image disponible</p>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Lien_achat</th>
+                    <td>{{ gift.lienAchat }}</td>
+                </tr>
+                <tr>
+                    <th>createdBy</th>
+                    <td>{{ gift.createdBy }}</td>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ gift.status }}</td>
+                </tr>
+                <tr>
+                    <th>Created by</th>
+                    <td>{{ gift.createdBy }}</td>
+                </tr>
+            </tbody>
+            
+        </table> #}
+
+        <div class="gift-box">
+            <div>
+                {% if vich_uploader_asset(gift, 'imageFile') is null %}
+                     <img height="100px" width="100px" src="{{ asset('img/gift_box.jpg') }}">
+                {% else %}
+                    <img height="100px" width="100px" src="{{ vich_uploader_asset(gift, 'imageFile') }}" alt="" srcset="">
+                {% endif %}
+            </div>
+
+            <div>
+                <p>{{ gift.nom }} </p>
+            </div>
+
+            <div>
+                <p>{{ gift.prix }}</p>
+            </div>
+
+            <div>
+                <p>
+                    {{ gift.lienAchat }}
+                </p>
+            </div>
+
+            <div>
+                <p>
+                    {{ gift.status }}
+                </p>
+            </div>
+
+            {% if is_granted('ROLE_ADMIN') %}
+            <div class="flex space-between ">   
+            <a href="{{ path('front_app_gift_edit', {'id': gift.id}) }}">edit</a>
+            {{ include('front/gift/_delete_form.html.twig') }}
+            </div>
+            {% endif %}
+        </div>
+
+        {% endfor %}
+
+
+
+
+{% endblock %}

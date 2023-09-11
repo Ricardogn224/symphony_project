@@ -1,0 +1,60 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Gift{% endblock %}
+
+
+{% block body %}
+
+
+<section class="section_tableau">
+    <div class="content">
+<table class="table">
+    <tbody>
+        <h1 class="flex flex-center">Voici le cadeaux</h1>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>
+                image
+            </th>
+            <th>Lien_achat</th>
+            <th>Status</th>
+            <th>actions</th>
+            
+        </tr>
+
+        <tr>
+            <td>{{ gift.id }}</td>
+            <td>{{ gift.nom }}</td>
+            <td>{{ gift.prix }}</td>
+            <td>
+   
+            {% if vich_uploader_asset(gift, 'imageFile') is null %}
+                <img height="100px" width="100px" src="{{ asset('img/gift_box.jpg') }}">
+            {% else %}
+                <img height="100px" width="100px" src="{{ vich_uploader_asset(gift, 'imageFile') }}" alt="" srcset="">
+            {% endif %}
+        </td>
+            <td>
+                {% if gift.lienAchat is null %}
+                <p>pas de lien</p>
+            {% else %}
+                <p>{{ gift.lienAchat }}</p>
+            {% endif %}
+            </td>
+            <td>{{ gift.status }}</td>
+            <td><a href="{{ path('front_app_gift_index') }}">back to list</a>
+
+                <a href="{{ path('front_app_gift_edit', {'id': gift.id}) }}">edit</a>
+                {{ include('front/gift/_delete_form.html.twig') }}
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+    </div>
+</section>
+
+{% endblock %}

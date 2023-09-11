@@ -1,0 +1,61 @@
+.show_gift {
+
+    .title {
+        text-align: center;
+    }
+
+    .link {
+
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        width: 150px;
+        text-align: center;
+        text-decoration: none;
+        font-family: 'Roboto', sans-serif;
+
+    }
+
+
+    .zone-action {
+
+        padding-bottom: 20px;
+    }
+
+    .gift-box {
+
+        margin-top: 20px;
+        background-color: aliceblue;
+        width: 20%;
+        padding: 80px;
+    }
+}
+
+.section-profile {
+
+    button {
+        background-color: #007bff;
+        color: #ffffff;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        margin: 5px;
+        text-align: center;
+        text-decoration: none;
+        font-family: "Roboto", sans-serif;
+    }
+
+    a {
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    li {
+        list-style-type: none;
+
+    }
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ controller_name }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="#">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+
+<body class="bg-white antialiased">
+
+<nav class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
+    <div class="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
+        <button class="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent" type="button" onclick="toggleNavbar('example-collapse-sidebar')"><i class="fas fa-bars"></i></button>
+        <a href="#" class="md:block text-left md:pb-2 text-neutral mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">WeCAN</a>
+        <div class="md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded hidden" id="example-collapse-sidebar">
+            <div class="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blue-200">
+                <div class="flex flex-wrap">
+                    <div class="w-6/12">
+                        <a class="md:block text-left md:pb-2 text-neutral mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">WeCAN</a>
+                    </div>
+                    <div class="w-6/12 flex justify-end">
+                        <button type="button" class="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent" onclick="toggleNavbar('example-collapse-sidebar')">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <ul class="md:flex-col md:min-w-full flex flex-col list-none">
+                <li class="items-center">
+                    <a class="text-xs transform duration-75 uppercase py-3 font-bold block hover:text-accent {{ app.request.attributes.get('_route') starts with 'back_app_user' ? 'text-accent' : 'text-neutral' }}" href="{{ path('back_app_user_index') }}">
+                        <i class="fa-solid mr-2 fa-users"></i> Utilisateurs
+                    </a>
+                <li class="items-center">
+                    <a class="text-xs transform duration-75 uppercase py-3 font-bold block hover:text-accent {{ app.request.attributes.get('_route') starts with 'back_app_notification' ? 'text-accent' : 'text-neutral' }}" href="{{ path('back_app_notification_index') }}">
+                        <i class="fa-solid mr-2 fa-message"></i> Campagne de notifications
+                    </a>
+                <li class="items-center">
+                    <a class="text-xs transform duration-75 uppercase py-3 font-bold block hover:text-accent {{ app.request.attributes.get('_route') starts with 'back_app_hospitalization' ? 'text-accent' : 'text-neutral' }}" href="{{ path('back_app_hospitalization_index') }}">
+                        <i class="fa-solid mr-2 fa-hospital"></i> Hospitalisations
+                    </a>
+                <li class="items-center">
+                    <a class="text-xs transform duration-75 uppercase py-3 font-bold block hover:text-accent {{ app.request.attributes.get('_route') starts with 'back_app_pathology' ? 'text-accent' : 'text-neutral' }}" href="{{ path('back_app_pathology_index') }}">
+                        <i class="fa-solid mr-2 fa-face-frown"></i> Pathologies
+                    </a>
+                <li class="items-center">
+                    <a class="text-xs transform duration-75 uppercase py-3 font-bold block hover:text-accent {{ app.request.attributes.get('_route') starts with 'back_app_vaccine' ? 'text-accent' : 'text-neutral' }}" href="{{ path('back_app_vaccine_index') }}">
+                        <i class="fa-solid mr-2 fa-syringe"></i> Vaccins
+                    </a>
+                <li class="items-center">
+                    <a class="text-xs transform duration-75 uppercase py-3 font-bold block hover:text-accent {{ app.request.attributes.get('_route') starts with 'back_app_job' ? 'text-accent' : 'text-neutral' }}" href="{{ path('back_app_job_index') }}">
+                        <i class="fa-solid mr-2 fa-user-doctor"></i> Métiers
+                    </a>
+                <li class="items-center">
+                    <a class="text-xs transform duration-75 uppercase py-3 font-bold block hover:text-accent {{ app.request.attributes.get('_route') starts with 'back_app_content' ? 'text-accent' : 'text-neutral' }}" href="{{ path('back_app_content_index') }}">
+                        <i class="fa-solid mr-2 fa-photo-film"></i> Contenus
+                    </a>
+                <li class="items-center">
+                    <a class="text-xs transform duration-75 uppercase py-3 font-bold block hover:text-accent {{ app.request.attributes.get('_route') starts with 'back_app_recommendation_pathology_hospital' ? 'text-accent' : 'text-neutral' }}" href="{{ path('back_app_recommendation_pathology_hospital_index') }}">
+                        <i class="fa-solid mr-2 fa-ranking-star"></i> Recommandations Hospitalisations
+                    </a>
+                <li class="items-center">
+                    <a class="text-xs transform duration-75 uppercase py-3 font-bold block hover:text-accent {{ app.request.attributes.get('_route') starts with 'back_app_recommendation_job_pathology' ? 'text-accent' : 'text-neutral' }}" href="{{ path('back_app_recommendation_job_pathology_index') }}">
+                        <i class="fa-solid mr-2 fa-ranking-star"></i> Recommandations Métier / pathologie
+                    </a>
+            </ul>
+
+            <hr class="my-4 md:min-w-full" />
+
+            <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+                <li class="items-center">
+                    <a href="{{ path('front_app_default') }}" class="text-xs transform duration-75 uppercase py-3 font-bold block hover:text-accent text-neutral">
+                        <i class="fa-solid mr-2 fa-backward"></i>
+                        Retour site
+                    </a>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="md:ml-64 min-h-screen">
+        <nav class="w-full bg-neutral md:flex-row md:flex-nowrap md:justify-start flex items-center p-4 hidden md:block">
+            <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
+                <p class="text-white text-sm uppercase hidden lg:inline-block font-semibold">{% block pageTitle %} {% endblock %}</p>
+                <div class="flex-col md:flex-row list-none items-center hidden md:flex">
+                    <div class="items-center flex">
+                            <span class="w-12 h-12 text-sm text-white bg-neutral inline-flex items-center justify-center rounded-full">
+                                <img alt="..." class="w-full rounded-full align-middle border-none shadow-lg" src="https://avatar.oxro.io/avatar.svg?name={{ app.user.firstname }}&caps=1"/>
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="px-4 md:px-10 mx-auto w-full mt-12">
+            <div class="flex flex-wrap">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+<script>
+    function toggleNavbar(collapseID) {
+        document.getElementById(collapseID).classList.toggle("hidden");
+        document.getElementById(collapseID).classList.toggle("bg-white");
+        document.getElementById(collapseID).classList.toggle("m-2");
+        document.getElementById(collapseID).classList.toggle("py-3");
+        document.getElementById(collapseID).classList.toggle("px-6");
+    }
+    function openDropdown(event, dropdownID) {
+        let element = event.target;
+        while (element.nodeName !== "A") {
+            element = element.parentNode;
+        }
+        let popper = Popper.createPopper(element, document.getElementById(dropdownID), {
+            placement: "bottom-end"
+        });
+        document.getElementById(dropdownID).classList.toggle("hidden");
+        document.getElementById(dropdownID).classList.toggle("block");
+    }
+</script>
+</html>

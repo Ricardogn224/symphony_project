@@ -1,0 +1,68 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Liste de cadeaux {% endblock %}
+
+{% block body %}
+
+
+
+    <section class="section_tableau">
+        <div class="content">
+            <h1>Listes de Cadeaux</h1>
+            <div class="flex-center">
+                
+                    <a class="btn btn-primary mb-3" href="{{ path('front_app_gift_list_new') }}"><button>Créez une liste de cadeaux !</button></a>
+                
+            </div>
+            <table>
+                
+                <thead>
+                    <tr>
+                        <th>Nom de la Liste</th>
+                        <th>Description</th>
+                        <th>Theme</th>
+                        <th>Privacy</th>
+                        <th>Status</th>
+                        <th>Date d'ouverture</th>
+                        <th>Date de fermeture</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for gift_list in gift_lists %}
+                    <tr>
+                        <td>{{ gift_list.titre }}</td>
+                        <td>{{ gift_list.description }}</td>
+                        <td>{{ gift_list.theme }}</td>
+                        <td>{{ gift_list.privacy }}</td>
+                        <td>{{ gift_list.status }}</td>
+                        <td>{{ gift_list.dateOuverture ? gift_list.dateOuverture|date('d-m-Y') : '' }}</td>
+                        <td>{{ gift_list.dateFermeture ? gift_list.dateFermeture|date('d-m-Y') : '' }}</td>
+                        <td>
+                            <a href="{{ path('front_app_gift_list_show', {'id': gift_list.id}) }}" class="btn btn-info">
+                                <button>acceder</button>
+                            </a>
+                            <a href="{{ path('front_app_gift_list_edit', {'id': gift_list.id}) }}" class="btn btn-warning">
+                                <button>
+                                    modifier
+                                </button>
+                            </a>
+
+                            <form method="post" action="{{ path('front_app_gift_list_delete', {'id': gift_list.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ gift_list.id) }}">
+                                <button class="btn">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">No records found</td>
+                        </tr>
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+{% endblock %}

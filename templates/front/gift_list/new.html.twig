@@ -1,0 +1,16 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Create new GiftList{% endblock %}
+
+
+{% block body %}
+   
+<section class="section-form">
+    <div class="form-connexion">
+        <a href="{{ path('front_app_gift_list_index') }}">
+            <button>Retour à la liste</button>
+        </a>
+    {{ include('front/gift_list/_form.html.twig') }}
+    </div>
+</section>
+{% endblock %}

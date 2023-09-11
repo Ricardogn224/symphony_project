@@ -1,0 +1,45 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Modifier l'utilisateur{% endblock %}
+
+{% block body %}
+<section class="section-form">
+    <div class="form-connexion">
+    <h1>Modifier l'utilisateur</h1>
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.nom) }}
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.nom) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.prenom) }}
+        {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.prenom) }}
+
+    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ form_end(form) }}
+    {% else %}
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.email) }}
+        </div>
+        {{ form_end(form) }}
+    {% endif %}
+    <div class="flex flex-center">
+        <a href="{{ path('back_app_users') }}">back to list</a>
+    </div>
+    </div>
+    
+    
+</div>
+</section>
+
+
+{% endblock %}

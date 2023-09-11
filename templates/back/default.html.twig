@@ -1,0 +1,24 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Espace administrateur {% endblock %}
+
+{% block body %}
+<section class="section-profile">
+    <div class="profile-page">
+        <h1 class="profile-header flex flex-center">Interface administrateur</h1>
+        <div class="profile-links">
+            <ul class="flex flex-center flex-column ">
+                <li><a href="{{ path('back_app_users') }}">
+                    <button>Gestion des utilisateurs</button>
+                </a></li>
+                <li><a href="{{path('front_app_gift_index')}}">
+                   <button> Gestion des cadeaux</button>
+                </a></li>
+                <li><a href="{{path('front_app_gift_list_index')}}">
+                   <button>Gestion des listes</button> 
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock %}

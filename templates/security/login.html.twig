@@ -1,0 +1,43 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+    
+<div class="container">
+    <section class="section-form">
+        <div class="form-connexion">
+                <form method="post">
+                    <h2 class="h3 mb-3 font-weight-normal">Connectez-vous</h2>
+                <div>
+                    <label for="inputEmail">Email:</label>
+                    <input type="text" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required >
+                </div>
+                <div>
+                    <label for="inputPassword">Password:</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div class="flex flex-center">
+                    <button class="btn btn-lg btn-default" type="submit">Connexion</button>
+                </div>
+                <hr />
+                <div class="">
+                    <p>Créer un compte <a class="btn-default" href="/register">ICI</a></p>
+                    <p>Un problème avec votre mot de passe ? <a class="btn-default" href="/manage-password">ICI</a></p>
+                </div>
+                </form>
+            </div>
+    </section>
+  
+        
+           
+  
+</div>
+{% endblock %}

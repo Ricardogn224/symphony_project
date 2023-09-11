@@ -1,0 +1,77 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Tout les cadeaux{% endblock %}
+
+{% block body %}
+
+
+
+<section class="section_tableau">
+    {% for message in app.flashes('danger') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %} 
+    <div class="content">
+        <h1>Touts les Cadeaux</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom </th>
+                    <th>Prix</th>
+                    <th>Image</th>
+                    
+                    <th>status</th>
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')  %}
+                     <th>actions</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for gift in gifts %}
+                <tr>
+                    <td>{{gift.nom}}</td>
+                    <td>{{gift.prix}}</td>
+                    <td>{% if vich_uploader_asset(gift, 'imageFile') is null %}
+                            <img height="100px" width="100px" src="{{ asset('img/gift_box.jpg') }}">
+                        {% else %}
+                            <img height="100px" width="100px" src="{{ vich_uploader_asset(gift, 'imageFile') }}" alt="" srcset="">
+                        {% endif %}
+                    </td>
+                   
+                    <td>
+                        {% if gift.lienAchat  == 0 %}
+                            <p>pas de lien</p>
+                        {% else %}
+                            <p >{{ gift.lienAchat }}</p>
+                        {% endif %}
+                    </td>
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')%}
+                    <td class="actions">
+                        <a href="{{ path('front_app_gift_show', {'id': gift.id}) }}">
+                            <button>
+                            show
+                            </button>
+                        </a>
+                        <a href="{{ path('front_app_gift_edit', {'id': gift.id}) }}">
+                            <button>
+                            edit
+                        </button>
+                        </a>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+                {% endfor %}
+                
+                <!-- Ajoutez d'autres lignes pour chaque liste de cadeaux -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{# <a href="{{ path('front_app_gift_new') }}">Create new</a> #}
+{% endblock %}

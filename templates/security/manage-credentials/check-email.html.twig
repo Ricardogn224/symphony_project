@@ -1,0 +1,21 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+<section class="section-form">
+    <div class="form-connexion">
+    <h2 class="options-title">Entrez votre mail</h2>
+    <div class="options">
+        <form action="{{ path('app_check_email') }}" method="post">
+            <div class="email-input">
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit">Valider</button>
+        </form>
+    </div>
+    </div>
+
+</section>
+{% endblock %}

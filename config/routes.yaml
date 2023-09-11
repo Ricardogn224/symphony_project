@@ -1,0 +1,22 @@
+controllers_front:
+    resource: ../src/Controller/Front
+    type: attribute
+    name_prefix: front_
+
+controllers_back:
+    resource: ../src/Controller/Back
+    type: attribute
+    name_prefix: back_
+    prefix: /admin/
+
+controllers_security:
+    resource: ../src/Controller/SecurityController.php
+    type: attribute
+
+controllers_register:
+    resource: ../src/Controller/RegistrationController.php
+    type: attribute
+
+controllers_manage_password:
+    resource: ../src/Controller/ManagePasswordController.php
+    type: attribute

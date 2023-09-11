@@ -1,0 +1,68 @@
+.section_tableau {
+    .content {
+        max-width: 1200px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid #ccc;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    th {
+        font-family: 'Roboto', sans-serif;
+        background-color: #ff6b6b;
+        /* Couleur de fond pour l'en-tête */
+        color: #fff;
+    }
+
+    td {
+        font-family: 'Roboto', sans-serif;
+        background-color: #ffdd67;
+        /* Couleur de fond pour les cellules de données */
+    }
+
+    td.actions {
+        font-size: 24px;
+        /* Augmentation de la taille de la police pour les actions */
+        color: #007bff;
+        /* Couleur du texte pour les actions */
+        cursor: pointer;
+    }
+
+    .emoji {
+        font-size: 30px;
+        /* Taille de police pour l'émoticône */
+    }
+
+    button {
+        background-color: #007bff;
+        color: #ffffff;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        margin: 5px;
+        text-align: center;
+        text-decoration: none;
+        font-family: "Roboto", sans-serif;
+    }
+}

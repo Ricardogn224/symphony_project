@@ -1,0 +1,47 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+<section class="section-home flex-center">
+    <div class=" space-around flex-center">
+
+        <div class="zone-image flex-center">
+            <div>
+                <div>
+                    <img width="250px" src="{{ asset('img/gift_box.jpg') }}" alt="" srcset="">
+                    
+                </div>
+                <div>
+                    <h2>
+                        Organisez l'anniversaire de vos proches en toute simplicité
+                    </h2>
+                    <h3>
+                        choisissez un thème, une date et invitez vos amis et Organisez les cadeau
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="zone-pres">
+            <div class="pres">
+                <div>
+                <div>
+                    <h1>Gestionnaire d'évènement  </h1>
+                </div>
+                <p> Vous pouvez créer des évènements, les partager et permettre à vos proches de s'organiser afin de pouvoir prévoir les cadeux et ce que vous aller apporter.
+                </p>
+
+                <div class="flex">
+                    <a href="{{path('app_login')}}">se connecter</a>
+                    <a href="{{path('app_register')}}">s'inscrire</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

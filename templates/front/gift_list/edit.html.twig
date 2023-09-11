@@ -1,0 +1,30 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Edit GiftList {% endblock %}
+
+{% block body %}
+
+<section class="section-form">
+    <div class="form-connexion">
+        <div class="flex  flex-center space-between ">
+            <div>
+                <a href="{{ path('front_app_gift_list_index') }}">
+                    <button>back to list</button>
+                </a>
+            </div>
+            
+            <div>
+                {{ include('front/gift_list/_delete_form.html.twig') }}
+            </div>
+        
+        </div>
+
+    {{ include('front/gift_list/_form.html.twig', {'button_label': 'Update'}) }}
+
+    
+    
+    </div>
+</section>
+{% endblock %}
+
+

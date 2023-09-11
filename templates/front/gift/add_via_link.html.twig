@@ -1,0 +1,19 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Nouveau cadeau{% endblock %}
+
+{% block body %}
+<section class="section-form">
+    <div class="form-connexion">
+<h1>Ajouter un cadeau</h1>
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+
+
+{{ form_end(form) }}
+        </div>
+</section>
+
+
+{% endblock %}
